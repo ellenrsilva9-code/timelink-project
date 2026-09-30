@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>TimeLink - Controle de Ponto</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+
+    <!-- CABEÇALHO COM NAVEGAÇÃO INTERNA -->
+    <header style="background-color: #800020; color: white; padding: 15px; text-align: center;">
+        <h1 style="color: white; margin: 0;">TIMELINK</h1>
+        <p style="margin: 5px 0 15px 0;">Sistema Integrado de Controle de Ponto Digital</p>
+        
+        <!-- Links de Navegação -->
+        <p style="margin: 0;">
+            <a href="#tela1" style="color: #ffffff; text-decoration: none;">1. Reconhecimento</a> | 
+            <a href="#tela2" style="color: #ffffff; text-decoration: none;">2. Ponto</a> | 
+            <a href="#tela3" style="color: #ffffff; text-decoration: none;">3. Histórico</a> | 
+            <a href="#tela4" style="color: #ffffff; text-decoration: none;">4. Políticas</a> | 
+            <a href="#tela5" style="color: #ffffff; text-decoration: none;">5. Dashboard</a> | 
+            <a href="#tela6" style="color: #ffffff; text-decoration: none;">6. Gestão</a> | 
+            <a href="#tela7" style="color: #ffffff; text-decoration: none;">7. Relatórios</a>
+        </p>
+    </header>
+
+    <br>
+
+    <main style="width: 800px; margin: 0 auto;">
+
+        <!-- TELA 1: RECONHECIMENTO FACIAL -->
+        <section id="tela1" style="background-color: white; padding: 20px; margin-bottom: 20px; border: 1px solid #ccc;">
+            <h2 style="color: #800020; margin-top: 0;">1. Reconhecimento Facial</h2>
+            <p><strong>Horário Atual:</strong> 08:00 AM - Quarta-feira, 25 de Outubro</p>
+
+            <div style="border: 2px solid #800020; width: 220px; padding: 10px; text-align: center; background-color: #fafafa; margin: 0 auto;">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300" alt="Foto da Juliana Silva" width="200">
+                <p style="margin-bottom: 0;"><strong>Status Facial:</strong><br><span style="color: green;">Rosto identificado (Juliana Silva)</span></p>
+            </div>
+        </section>
+
+        <!-- TELA 2: REGISTRO DE PONTO -->
+        <section id="tela2" style="background-color: white; padding: 20px; margin-bottom: 20px; border: 1px solid #ccc;">
+            <h2 style="color: #800020; margin-top: 0;">2. Registrar Ponto</h2>
+            
+            <form onsubmit="event.preventDefault(); document.getElementById('mensagem-sucesso-ponto').style.display='block';">
+                <label for="funcionario"><strong>ID do Funcionário:</strong></label><br>
+                <input type="number" id="funcionario" name="funcionario_id" value="1" readonly style="padding: 5px; margin-top: 5px;"><br><br>
+
+                <label for="tipo"><strong>Tipo de Ponto:</strong></label><br>
+                <select id="tipo" name="tipo_ponto" required style="padding: 5px; margin-top: 5px;">
+                    <option value="Entrada">Entrada</option>
+                    <option value="Intervalo">Intervalo</option>
+                    <option value="Retorno">Retorno</option>
+                    <option value="Saída">Saída</option>
+                </select><br><br>
+
+                <button type="submit" style="background-color: #800020; color: white; border: none; padding: 10px 15px; cursor: pointer;">
+                    Confirmar Registro
+                </button>
+            </form>
+
+            <br>
+            <div id="mensagem-sucesso-ponto" style="display: none; background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb;">
+                <p style="margin: 0;"><strong>Status do Registro:</strong> <span style="color: green;">✓ Ponto registrado com sucesso para <strong>Juliana Silva</strong> às 08:00 AM!</span></p>
+            </div>
+        </section>
+
+        <!-- TELA 3: HISTÓRICO E RESUMO -->
+        <section id="tela3" style="background-color: white; padding: 20px; margin-bottom: 20px; border: 1px solid #ccc;">
+            <h2 style="color: #800020; margin-top: 0;">3. Histórico Pessoal e Resumo do Mês</h2>
+            
+            <h3>Resumo do Mês</h3>
+            <ul>
+                <li><strong>Total de Horas Trabalhadas:</strong> 160h / 168h</li>
+                <li><strong>Saldo Banco de Horas:</strong> <span style="color: green;">+4h 30m (Extra)</span></li>
+                <li><strong>Atrasos no Mês:</strong> <span style="color: red;">1h 15m</span></li>
+            </ul>
+
+            <h3>Registros Recentes</h3>
+            <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; text-align: left;">
+                <tr style="background-color: #800020; color: white;">
+                    <th>Data</th>
+                    <th>Horários (ENT | INT | RET | SAÍ)</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Segunda, 23 Out</td>
+                    <td>ENT: 08:03 | INT: 12:05 | RET: 13:00 | SAÍ: 17:08</td>
+                    <td><span style="color: green;"><strong>Ponto Confirmado</strong></span></td>
+                </tr>
+                <tr>
+                    <td>Terça, 24 Out</td>
+                    <td>ENT: 08:03 | INT: 12:05 | RET: 13:00 | SAÍ: 17:08</td>
+                    <td><span style="color: orange;"><strong>Parcial</strong></span></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- TELA 4: INFORMAÇÕES INSTITUCIONAIS -->
+        <section id="tela4" style="background-color: white; padding: 20px; margin-bottom: 20px; border: 1px solid #ccc;">
+            <h2 style="color: #800020; margin-top: 0;">4. Informações Institucionais e Políticas</h2>
+            
+            <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; margin-bottom: 15px;">
+                <p style="margin: 0;"><strong>Aviso Geral da Fábrica:</strong> <span style="color: darkred;">Manutenção Programada no Setor B (Data: 28/Out)</span></p>
+            </div>
+
+            <h3>Destaques de Políticas de RH (Downloads)</h3>
+            <ul>
+                <li><a href="#" onclick="alert('Iniciando download do Código de Conduta...'); return false;" style="color: #800020;">Código de Conduta Atualizado (PDF)</a></li>
+                <li><a href="#" onclick="alert('Iniciando download das regras do Plano de Saúde...'); return false;" style="color: #800020;">Plano de Saúde: Novas Regras (PDF)</a></li>
+                <li><a href="#" onclick="alert('Iniciando download do Guia de Segurança...'); return false;" style="color: #800020;">Segurança no Trabalho (PDF)</a></li>
+            </ul>
+
+            <h3>Horários de Turno Padrão</h3>
+            <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; text-align: left;">
+                <tr style="background-color: #800020; color: white;">
+                    <th>Turno</th>
+                    <th>Horário</th>
+                    <th>Marcações Esperadas</th>
+                </tr>
+                <tr>
+                    <td>Turno A</td>
+                    <td>06:00 - 14:00</td>
+                    <td>ENT | INT | 12:05</td>
+                </tr>
+                <tr>
+                    <td>Turno B</td>
+                    <td>14:00 - 22:00</td>
+                    <td>ENT | INT | 23:07 | SAÍ</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- TELA 5: DASHBOARD EM TEMPO REAL -->
+        <section id="tela5" style="background-color: white; padding: 20px; margin-bottom: 20px; border: 1px solid #ccc;">
+            <h2 style="color: #800020; margin-top: 0;">5. Dashboard em Tempo Real (Gestão)</h2>
+
+            <table border="0" cellpadding="0" style="width: 100%; text-align: center; margin-bottom: 15px;">
+                <tr>
+                    <td style="padding: 5px;">
+                        <div style="background-color: #d4edda; padding: 10px; border: 1px solid green;">
+                            <p style="color: green; margin: 0;"><strong>Presentes</strong></p>
+                            <h2 style="color: green; margin: 5px 0 0 0;">28</h2>
+                        </div>
+                    </td>
+                    <td style="padding: 5px;">
+                        <div style="background-color: #f8d7da; padding: 10px; border: 1px solid red;">
+                            <p style="color: red; margin: 0;"><strong>Faltas</strong></p>
+                            <h2 style="color: red; margin: 5px 0 0 0;">3</h2>
+                        </div>
+                    </td>
+                    <td style="padding: 5px;">
+                        <div style="background-color: #fff3cd; padding: 10px; border: 1px solid orange;">
+                            <p style="color: orange; margin: 0;"><strong>Atrasos</strong></p>
+                            <h2 style="color: orange; margin: 5px 0 0 0;">5</h2>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <h3>Vista Rápida da Equipe</h3>
+            <ul>
+                <li><strong>João P.</strong> - Status: <span style="color: green;">Em Ponto</span></li>
+                <li><strong>Maria C.</strong> - Status: <span style="color: red;">Falta</span></li>
+                <li><strong>Lucas R.</strong> - Status: <span style="color: orange;">Atraso</span></li>
+            </ul>
+        </section>
+
+        <!-- TELA 6: GESTÃO DE DIVERGÊNCIAS -->
+        <section id="tela6" style="background-color: white; padding: 20px; margin-bottom: 20px; border: 1px solid #ccc;">
+            <h2 style="color: #800020; margin-top: 0;">6. Gestão de Faltas, Atrasos e Ajustes</h2>
+            
+            <!-- Botão que abre a caixa de formulário para NOVO AJUSTE -->
+            <button type="button" onclick="document.getElementById('form-novo-ajuste').style.display='block';" style="padding: 8px 12px; cursor: pointer; background-color: #800020; color: white; border: none;">
+                + Registrar Novo Ajuste
+            </button>
+            <br><br>
+
+            <!-- PAINEL OCULTO: FORMULÁRIO DE NOVO AJUSTE -->
+            <div id="form-novo-ajuste" style="display: none; background-color: #f9f9f9; padding: 15px; border: 2px solid #800020; margin-bottom: 20px;">
+                <h3 style="margin-top: 0; color: #800020;">Novo Ajuste Manual de Ponto</h3>
+                <form onsubmit="event.preventDefault(); alert('Ajuste salvo no sistema!'); document.getElementById('form-novo-ajuste').style.display='none';">
+                    <label><strong>Colaborador:</strong></label><br>
+                    <select required style="padding: 5px; width: 100%; margin-top: 5px;">
+                        <option value="">Selecione...</option>
+                        <option value="1">Juliana Silva</option>
+                        <option value="2">Lucas R.</option>
+                        <option value="3">Maria C.</option>
+                    </select><br><br>
+
+                    <label><strong>Data da Ocorrência:</strong></label><br>
+                    <input type="date" required style="padding: 5px; margin-top: 5px;"><br><br>
+
+                    <label><strong>Tipo de Ajuste:</strong></label><br>
+                    <select required style="padding: 5px; margin-top: 5px;">
+                        <option value="Abono Atraso">Abonar Atraso</option>
+                        <option value="Abono Falta">Abonar Falta (Atestado)</option>
+                        <option value="Inclusão Ponto">Inclusão Manual de Ponto</option>
+                    </select><br><br>
+
+                    <label><strong>Justificativa / Motivo:</strong></label><br>
+                    <textarea rows="3" style="width: 100%; margin-top: 5px;" placeholder="Digite o motivo do ajuste..."></textarea><br><br>
+
+                    <button type="submit" style="background-color: green; color: white; border: none; padding: 8px 12px; cursor: pointer;">Salvar Ajuste</button>
+                    <button type="button" onclick="document.getElementById('form-novo-ajuste').style.display='none';" style="background-color: #666; color: white; border: none; padding: 8px 12px; cursor: pointer;">Cancelar</button>
+                </form>
+            </div>
+
+            <!-- PAINEL OCULTO: CAIXA DE JUSTIFICATIVA -->
+            <div id="painel-justificativa" style="display: none; background-color: #fff3cd; padding: 15px; border: 1px solid orange; margin-bottom: 20px;">
+                <h3 style="margin-top: 0; color: #856404;">Analisar Justificativa da Ocorrência</h3>
+                <p><strong>Colaborador:</strong> <span id="nome-colaborador">Juliana Silva</span></p>
+                <form onsubmit="event.preventDefault(); alert('Decisão gravada com sucesso!'); document.getElementById('painel-justificativa').style.display='none';">
+                    <label><strong>Decisão do Gestor:</strong></label><br>
+                    <select style="padding: 5px; margin-top: 5px;">
+                        <option value="Aprovar">Aprovar e Abonar Horas</option>
+                        <option value="Rejeitar">Rejeitar (Manter Desconto)</option>
+                    </select><br><br>
+                    
+                    <button type="submit" style="background-color: #800020; color: white; border: none; padding: 8px 12px; cursor: pointer;">Confirmar Decisão</button>
+                    <button type="button" onclick="document.getElementById('painel-justificativa').style.display='none';" style="background-color: #666; color: white; border: none; padding: 8px 12px; cursor: pointer;">Fechar</button>
+                </form>
+            </div>
+
+            <h3>Divergências de Ponto</h3>
+            <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; text-align: left;">
+                <tr style="background-color: #800020; color: white;">
+                    <th>Colaborador / Data</th>
+                    <th>Ocorrência</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td>Juliana Silva | 23 Out</td>
+                    <td><span style="color: orange;">Atraso de 15 min</span></td>
+                    <td><a href="#" onclick="document.getElementById('nome-colaborador').innerText='Juliana Silva'; document.getElementById('painel-justificativa').style.display='block'; return false;" style="color: #800020;">Justificar / Abonar</a></td>
+                </tr>
+                <tr>
+                    <td>Lucas R. | 24 Out</td>
+                    <td><span style="color: red;">Falta não justificada</span></td>
+                    <td><a href="#" onclick="document.getElementById('nome-colaborador').innerText='Lucas R.'; document.getElementById('painel-justificativa').style.display='block'; return false;" style="color: #800020;">Justificar / Abonar</a></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- TELA 7: RELATÓRIOS -->
+        <section id="tela7" style="background-color: white; padding: 20px; border: 1px solid #ccc;">
+            <h2 style="color: #800020; margin-top: 0;">7. Relatórios Consolidados</h2>
+            
+            <h3>Horas Normais vs Horas Extras</h3>
+            <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%; text-align: left;">
+                <tr style="background-color: #800020; color: white;">
+                    <th>Mês</th>
+                    <th>Horas Normais</th>
+                    <th>Horas Extras</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Setembro</td>
+                    <td>160h</td>
+                    <td>15h</td>
+                    <td>175h</td>
+                </tr>
+                <tr>
+                    <td>Outubro</td>
+                    <td>160h</td>
+                    <td>12h</td>
+                    <td>172h</td>
+                </tr>
+            </table>
+
+            <br>
+            <p style="margin-bottom: 10px;"><strong>Gerar / Exportar Relatório:</strong></p>
+            
+            <!-- Botões que abrem o gerador de relatório -->
+            <button onclick="document.getElementById('form-gerar-relatorio').style.display='block';" style="background-color: #800020; color: white; padding: 8px 12px; border: none; cursor: pointer; margin-right: 5px;">
+                📄 Gerar Relatório em PDF
+            </button>
+            <button onclick="document.getElementById('form-gerar-relatorio').style.display='block';" style="background-color: #333; color: white; padding: 8px 12px; border: none; cursor: pointer;">
+                📊 Gerar Relatório em CSV
+            </button>
+
+            <!-- PAINEL OCULTO: FORMULÁRIO DE GERAÇÃO DE RELATÓRIO -->
+            <div id="form-gerar-relatorio" style="display: none; background-color: #e9ecef; padding: 15px; border: 2px solid #333; margin-top: 15px;">
+                <h3 style="margin-top: 0; color: #333;">Configurar Exportação de Relatório</h3>
+                <form onsubmit="event.preventDefault(); alert('Relatório gerado com sucesso para o período selecionado!'); document.getElementById('form-gerar-relatorio').style.display='none';">
+                    <label><strong>Selecione o Mês:</strong></label><br>
+                    <select required style="padding: 5px; margin-top: 5px;">
+                        <option value="Outubro">Outubro / 2026</option>
+                        <option value="Setembro">Setembro / 2026</option>
+                        <option value="Agosto">Agosto / 2026</option>
+                    </select><br><br>
+
+                    <label><strong>Incluir no documento:</strong></label><br>
+                    <input type="checkbox" checked> Horas Extras<br>
+                    <input type="checkbox" checked> Atrasos e Faltas<br>
+                    <input type="checkbox"> Assinatura Digital do Gestor<br><br>
+
+                    <button type="submit" style="background-color: #800020; color: white; border: none; padding: 8px 12px; cursor: pointer;">Baixar Arquivo Processado</button>
+                    <button type="button" onclick="document.getElementById('form-gerar-relatorio').style.display='none';" style="background-color: #666; color: white; border: none; padding: 8px 12px; cursor: pointer;">Cancelar</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <br><br>
+
+    <!-- RODAPÉ -->
+    <footer style="background-color: #333; color: white; padding: 15px; text-align: center;">
+        <p style="margin: 0;">&copy; 2026 <strong>TimeLink</strong> - Todos os direitos reservados.</p>
+        <p style="margin: 5px 0 0 0;"><a href="#tela1" style="color: #ffffff; text-decoration: none;">Voltar ao Topo ↑</a></p>
+    </footer>
+
+</body>
+</html>
